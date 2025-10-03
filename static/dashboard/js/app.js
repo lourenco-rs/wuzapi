@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('pairphoneinput').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
-      const phone = pairPhoneInput.value.trim();
+      const phone = e.target.value.trim();
       if (phone) {
         connect().then((data) => {
           if(data.success==true) {
