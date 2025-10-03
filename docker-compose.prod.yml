@@ -1,0 +1,16 @@
+# wuzapi/docker-compose.prod.yml
+services:
+  wuzapi-server:
+    labels:
+      - traefik.enable=true
+      
+      - traefik.http.routers.wa-web.rule=Host(`wa.branus.com.br`)
+      - traefik.http.routers.wa-web.entrypoints=web
+      - traefik.http.routers.wa-web.middlewares=redirect-to-https@file
+
+      - traefik.http.routers.wa-secure.rule=Host(`wa.branus.com.br`)
+      - traefik.http.routers.wa-secure.entrypoints=websecure
+      - traefik.http.routers.wa-secure.tls=true
+      - traefik.http.routers.wa-secure.tls.certresolver=le
+      - traefik.http.routers.wa-secure.middlewares=secure-headers@file
+      - traefik.http.services.wa.loadbalancer.server.port=3000

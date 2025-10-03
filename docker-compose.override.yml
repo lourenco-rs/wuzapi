@@ -1,0 +1,9 @@
+services:
+  wuzapi-server:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.wa.rule=Host(`wa.local`)
+      - traefik.http.routers.wa.entrypoints=web
+      - traefik.http.services.wa.loadbalancer.server.port=8080
+    volumes:
+      - ./static:/app/static
