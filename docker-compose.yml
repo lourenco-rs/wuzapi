@@ -28,7 +28,7 @@ services:
     restart: on-failure
 
   db:
-    image: postgres:16
+    image: postgres:16-alpine
     environment:
       POSTGRES_USER: ${DB_USER:-wuzapi}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-wuzapi}
